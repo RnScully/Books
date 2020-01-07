@@ -69,9 +69,7 @@ driver =  webdriver.Firefox(options=option)
 actions = ActionChains(driver)
 
 
-client = MongoClient()
-db = client['reviews']
-gr_collection = db['user_reviews']
+
 first_page = True
 
 samples = import_samples()
@@ -108,12 +106,14 @@ while current_index < stop_index:
     scroll_to_bottom(1.5)  # let the website load for 1.5 secs...ugh
     print('scooping reveiws')
 
+    #connect to the mongo thing
     client = MongoClient()
     db = client['reviews']
     gr_collection = db['user_reviews']
     gr_collection.insert_one(scoop_reviews()) 
     #add doc to mongodb
     print("finshed scooping user {}, but now I'm sleepy".format(gr_userid))
+    #disconnect from mongo(do this over and over, don't keep mongo open, hopefully saves ram!?)
     driver.close()
 
     time.sleep(3) #sleep of 4 felt too long. see if 3 gets you kicked. 
