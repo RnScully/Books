@@ -114,9 +114,10 @@ while current_index < stop_index:
     #add doc to mongodb
     print("finshed scooping user {}, but now I'm sleepy".format(gr_userid))
     #disconnect from mongo(do this over and over, don't keep mongo open, hopefully saves ram!?)
-    driver.close()
+    client.close()
 
     time.sleep(3) #sleep of 4 felt too long. see if 3 gets you kicked. 
 #end loop
+driver.close()
 
 
