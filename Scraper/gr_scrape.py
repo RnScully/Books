@@ -78,6 +78,7 @@ samples = import_samples()
 current_index=get_last_index()
 stop_index = len(samples)-1
 while current_index < stop_index:
+
     print("**stretches**")
     current_index  +=1
     log_current_sample()
@@ -106,11 +107,16 @@ while current_index < stop_index:
     print('scrolling down')
     scroll_to_bottom(1.5)  # let the website load for 1.5 secs...ugh
     print('scooping reveiws')
+
+    client = MongoClient()
+    db = client['reviews']
+    gr_collection = db['user_reviews']
     gr_collection.insert_one(scoop_reviews()) 
     #add doc to mongodb
     print("finshed scooping user {}, but now I'm sleepy".format(gr_userid))
+    driver.close()
+
     time.sleep(3) #sleep of 4 felt too long. see if 3 gets you kicked. 
 #end loop
 
-driver.close()
 
