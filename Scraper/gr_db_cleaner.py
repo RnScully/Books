@@ -4,6 +4,9 @@ import json
 from bs4 import BeautifulSoup
 import re
 
+def text_cleaner():
+
+
 def gr_db_cleaner(find_lim = 10):
     '''
     a function that reads in goodreads user review tables gathered
@@ -23,17 +26,17 @@ def gr_db_cleaner(find_lim = 10):
     for idx, users in enumerate(documents):
         userid = documents[idx]['userid']
         review_list = documents[idx]['reviews']
-            if len(review_list) ==0:
-                sub_rev = [None, None, userid, None, None, None]
+        if len(review_list) ==0:
+            sub_rev = [None, None, userid, None, None, None]
+            all_revs.append(sub_rev)
+        else:
+            for review in review_list:
+                soup = BeautifulSoup(review, 'html.parser')
+                title = soup.find_all(class_ = re.compile('title'))[0].text
+                pages = int(soup.find_all(class_ =re.compile('num_pages'))[0].text.split()[2])
+                av_rate = float(soup.find_all(class_ =re.compile('avg_rating'))[0].text.split()[2])
+                num_rate = soup.find_all(class_ =re.compile('num_ratings'))[0].text
+                user_rating = soup.find_all(class_ =re.compile('field rating'))[0].text
+                sub_rev = [title, pages, userid, user_rating, num_rate, av_rate]
                 all_revs.append(sub_rev)
-            else:
-                for review in review_list:
-                    soup = BeautifulSoup(review, 'html.parser')
-                    title = soup.find_all(class_ = re.compile('title'))[0].text
-                    pages = soup.find_all(class_ =re.compile('num_pages'))[0].text
-                    av_rate = soup.find_all(class_ =re.compile('avg_rating'))[0].text
-                    num_rate = soup.find_all(class_ =re.compile('num_ratings'))[0].text
-                    user_rating = soup.find_all(class_ =re.compile('field rating'))[0].text
-                    sub_rev = [title, pages, userid, user_rating, num_rate, av_rate]
-                    all_revs.append(sub_rev)
     return all_revs
