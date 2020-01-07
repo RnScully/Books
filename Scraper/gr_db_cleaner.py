@@ -57,13 +57,17 @@ def gr_db_cleaner(find_lim = 10):
             sub_rev = [None, None, userid, None, None, None]
             all_revs.append(sub_rev)
         else:
-            for review in review_list:
+           for review in review_list:
                 soup = BeautifulSoup(review, 'html.parser')
-                title = soup.find_all(class_ = re.compile('title'))[0].text
-                pages = int(soup.find_all(class_ =re.compile('num_pages'))[0].text.split()[2])
+                title = soup.find_all(class_ = re.compile('title'))[0].text.split('\n')[1].strip()
+                try:
+                    pages = int(soup.find_all(class_ =re.compile('num_pages'))[0].text.split()[2])
+                except:
+                    pages = None
                 av_rate = float(soup.find_all(class_ =re.compile('avg_rating'))[0].text.split()[2])
                 num_rate = int(soup.find_all(class_ =re.compile('num_ratings'))[0].text.split()[2].replace(',',''))
                 user_rating = str_to_rate(soup.find_all(class_ =re.compile('field rating'))[0].text.split())
                 sub_rev = [title, pages, userid, user_rating, num_rate, av_rate]
                 all_revs.append(sub_rev)
+    client.close()
     return all_revs
