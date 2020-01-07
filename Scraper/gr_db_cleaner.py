@@ -34,7 +34,7 @@ def str_to_rate(qual_state):
     return user_rating
 
 
-def gr_db_cleaner(find_lim = 10):
+def cleaner(find_lim = 10):
     '''
     a function that reads in goodreads user review tables gathered
     by the gr_scraper and returns a list for schema
