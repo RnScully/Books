@@ -1,9 +1,10 @@
-# Book Readers Are Saps!
-<p align="center">
+<p align="center"># Book Readers Are Saps!</p>
+<p align="center"> 
 <img src="img/goodreads-badge-read-reviews-a8508f765fac427f58da8ebf9e89721a.png">
 </p>
 
 I jokingly call book readers saps because they heavily over-rate books in the high ratings range, instead of seeming to have a scale that rates books they've read compared against one another, in a way that one would expect would create a uniform ranking. This makes choosing a book based on ratings much more challenging than choosing a resturant by rating, where a 3* resturant can be considered a middle of the road resturant...a middle of the road book seems to be 4+ in ranking from 1 to five. 
+
 So, honestly, I'd expect something like this boy here, if humans were, as economists like to call us, rational. 
 <p align="left">
 <img src="img/uniform_rational_graph2.png">

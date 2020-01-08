@@ -34,40 +34,57 @@ def str_to_rate(qual_state):
     return user_rating
 
 
+
 def cleaner(find_lim = 10):
     '''
     a function that reads in goodreads user review tables gathered
     by the gr_scraper and returns a list for schema
     +++++++++++
     Atributes
-    find_lim (int): how many user-reviews to clean.  
+    find_lim (int): how many user-reviews to clean. pass 'all' into find lim
+                    to clean entire db.   
     +++++++
     '''
-    
+   
+
     client = MongoClient('localhost', 27017)
     db=client['reviews']
     collection=db['user_reviews']
+    if find_lim == 'all'
+        find_lim = len(documents)
+
 
     documents = [x for x in collection.find().limit(find_lim)]
+    client.close()
     all_revs = []
     for idx, users in enumerate(documents):
-        userid = documents[idx]['userid']
+        try:
+            user = doc['userid']
+        except:
+            continue
+       
         review_list = documents[idx]['reviews']
-        if len(review_list) ==0:
-            sub_rev = [None, None, userid, None, None, None]
+        if len(review_list) ==0: #some users have not added any books to their goodreads profile
+            sub_rev = [None, None, None, None, None, userid, None, None, None]
             all_revs.append(sub_rev)
         else:
-           for review in review_list:
+            for review in review_list:
                 soup = BeautifulSoup(review, 'html.parser')
                 title = soup.find_all(class_ = re.compile('title'))[0].text.split('\n')[1].strip()
                 try:
                     pages = int(soup.find_all(class_ =re.compile('num_pages'))[0].text.split()[2])
-                except:
+                except:#Some works are infinite scroll documents without pages. 
                     pages = None
+                try:
+                    isbn = soup.find_all(class_ = re.compile('isbn13'))[0].text.strip('isbn13').strip()
+                except: #some works are not given ISBN
+                    isbn = None 
+                book_type = soup.find_all(class_ = re.compile('format'))[0].text.split('\n')[0].strip()
+                author = soup.find_all(class_ = re.compile('author'))[0].text.strip('author ').split('\n')[0]
                 av_rate = float(soup.find_all(class_ =re.compile('avg_rating'))[0].text.split()[2])
                 num_rate = int(soup.find_all(class_ =re.compile('num_ratings'))[0].text.split()[2].replace(',',''))
                 user_rating = str_to_rate(soup.find_all(class_ =re.compile('field rating'))[0].text.split())
-                sub_rev = [title, pages, userid, user_rating, num_rate, av_rate]
+                
+                sub_rev = [title,author, isbn, book_type, pages, userid, user_rating, num_rate, av_rate]
                 all_revs.append(sub_rev)
-    client.close()
     return all_revs
