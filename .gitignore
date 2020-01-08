@@ -1,7 +1,8 @@
 #Jupyter Notebook
 .ipynb_checkpoints
 mongo_pipe.ipynb
-
+Pandas EDA.ipynb
 #scrapwork
 books_log.txt
+src/datacln.txt
 

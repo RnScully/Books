@@ -35,7 +35,7 @@ def str_to_rate(qual_state):
 
 
 
-def cleaner(find_lim = 10):
+def cleaner():
     '''
     a function that reads in goodreads user review tables gathered
     by the gr_scraper and returns a list for schema
@@ -50,22 +50,21 @@ def cleaner(find_lim = 10):
     client = MongoClient('localhost', 27017)
     db=client['reviews']
     collection=db['user_reviews']
-    if find_lim == 'all'
-        find_lim = len(documents)
+    
 
 
-    documents = [x for x in collection.find().limit(find_lim)]
+    documents = [x for x in db['user_reviews'].find()]
     client.close()
     all_revs = []
     for idx, users in enumerate(documents):
         try:
-            user = doc['userid']
+            user = documents[idx]['userid']
         except:
             continue
        
         review_list = documents[idx]['reviews']
         if len(review_list) ==0: #some users have not added any books to their goodreads profile
-            sub_rev = [None, None, None, None, None, userid, None, None, None]
+            sub_rev = [None, None, None, None, None, user, None, None, None]
             all_revs.append(sub_rev)
         else:
             for review in review_list:
@@ -85,6 +84,18 @@ def cleaner(find_lim = 10):
                 num_rate = int(soup.find_all(class_ =re.compile('num_ratings'))[0].text.split()[2].replace(',',''))
                 user_rating = str_to_rate(soup.find_all(class_ =re.compile('field rating'))[0].text.split())
                 
-                sub_rev = [title,author, isbn, book_type, pages, userid, user_rating, num_rate, av_rate]
+                sub_rev = [title,author, isbn, book_type, pages, user, user_rating, num_rate, av_rate]
                 all_revs.append(sub_rev)
     return all_revs
+    
+def log_data(data):
+    'a helperfunction to log our data'
+    data = str(data)
+    with open('datacln.txt', 'w')as f:
+        f.write(data)
+
+print('hello')
+data = cleaner()
+print('data cleaned')
+log_data(data)
+
