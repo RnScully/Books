@@ -7,7 +7,7 @@ I jokingly call book readers saps because they heavily over-rate books in the hi
 
 So, honestly, I'd expect something like this boy here, if humans were, as economists like to call us, rational. 
 <p align="left">
-<img src="img/uniform_rational_graph2.png">
+<img src="img/rational_graph2.png">
 
 but knowing that we're not rational, heck, I'll assume that the vast majority of people are reviewing books at 4 stars, something more like this. 
 <p align="left">
