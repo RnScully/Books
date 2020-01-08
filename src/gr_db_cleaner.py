@@ -3,6 +3,7 @@ import pprint
 import json
 from bs4 import BeautifulSoup
 import re
+import numpy as np
 
 def str_to_rate(qual_state):
     '''
@@ -86,16 +87,15 @@ def cleaner():
                 
                 sub_rev = [title,author, isbn, book_type, pages, user, user_rating, num_rate, av_rate]
                 all_revs.append(sub_rev)
-    return all_revs
+    np.save("datacln", all_revs)            
     
-def log_data(data):
-    'a helperfunction to log our data'
-    data = str(data)
-    with open('datacln.txt', 'w')as f:
-        f.write(data)
+    
+
+     
+    
 
 print('hello')
-data = cleaner()
+cleaner()
 print('data cleaned')
-log_data(data)
+
 
