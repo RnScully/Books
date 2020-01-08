@@ -87,7 +87,7 @@ def cleaner():
                 
                 sub_rev = [title,author, isbn, book_type, pages, user, user_rating, num_rate, av_rate]
                 all_revs.append(sub_rev)
-    np.save("datacln", all_revs)            
+    np.save("data/datacln", all_revs)            
     
     
 
