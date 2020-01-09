@@ -31,26 +31,27 @@ Our hypothesis is that goodreads raters rate books above 4 stars more often than
 H0 : P(x<=4) > .5
 Ha : P(x>4)>.5
 
-Analys methods 
+# Analys methods 
 Tech stack
+The tech stack consists of Python 3, Numpy, Pandas, Beautiful Soup, Linguistic Inquiry and Word Count (LIWC), Natural Language Toolkit (NLTK), Scikit-Learn, Matplotlib, HTML, CSS, Tableau, Flask, and Heroku.
 
-show where results of the scraping is in a data directory
+The tech stack consists of Python 3, Numpy, Pandas, Selenium, PyMongo, Beautiful Soup, Scikit-Learn, Matplotlib, HTML
  
-scripts in src:
+scripts in src/:
 
-samples.py
+```samples.py```
 a script which made my 10 sample sets.
 
-gr_scraper.py
+```gr_scraper.py```
 a script which accesses progress.txt and samples.txt as logfiles to scrape the bookshelves of randomly chosen users on goodreads and stores it in mongodb
 
-gr_db_cleaner.py 
+```gr_db_cleaner.py````
 a script which does initial data cleaning and feature engineering, turning the mongo collection into a numpy array. 
 
-Data in src/data, the cleaned dataset
-datacln.npy
+Data in src/data/, the cleaned dataset
+```datacln.npy```
 
-Results section
+# Results section
 
 A t test was performed on the hypothesis, returning a t statistic of 127.2666, and a P value that rounded to 0. Its very safe to say that goodreads reviews are biassed even more than expected. 
 
