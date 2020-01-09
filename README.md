@@ -52,6 +52,14 @@ datacln.npy
 
 Results section
 
+
+
+<p align="center">
+<img src="simpsons_paradox.png">
+</p>
+Furthermore, since the average user rating given to books is much higher than the average rating (of all user ratings) for each book, we can conclude, per Simpson's Paradox, that highly reviewed books get more ratings, and a higher porportion of 5 star ratings. This suggests that goodreads actually is working, by leading people to focus on the best books.
+
+
 Anyone who wonders if I fall into this same issue...well, [here's my goodreads shelf,](https://www.goodreads.com/review/list/26338733) which you can see is...primarily 4 and 5 star ratings. 
 
 
