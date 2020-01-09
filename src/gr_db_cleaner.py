@@ -45,6 +45,9 @@ def cleaner():
     find_lim (int): how many user-reviews to clean. pass 'all' into find lim
                     to clean entire db.   
     +++++++
+    Returns
+    all_revs: (lst) a list of all the reviews cleaned and schemaed. 
+
     '''
    
 
@@ -87,15 +90,17 @@ def cleaner():
                 
                 sub_rev = [title,author, isbn, book_type, pages, user, user_rating, num_rate, av_rate]
                 all_revs.append(sub_rev)
-    np.save("data/datacln", all_revs)            
+    return all_revs
     
     
 
      
     
-
-print('hello')
-cleaner()
-print('data cleaned')
+if __name__ == "__main__":
+    
+    print('hello')
+    cleaner()
+    print('data cleaned')
+    np.save("data/datacln", all_revs) 
 
 
