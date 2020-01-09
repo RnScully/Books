@@ -52,10 +52,13 @@ datacln.npy
 
 Results section
 
+A t test was performed on the hypothesis, returning a t statistic of 127.2666, and a P value that rounded to 0. Its very safe to say that goodreads reviews are biassed even more than expected. 
 
+
+The average rating given to books reviewed in the sample was 4.483 (plus or minus .0074 @95% confidence), and the average rating of books on goodreads, as distinct from the average rating given by a user, is 4.02 (plus or minus .004 @95% confidence)
 
 <p align="center">
-<img src="simpsons_paradox.png">
+<img src="img/simpsons_paradox.png">
 </p>
 Furthermore, since the average user rating given to books is much higher than the average rating (of all user ratings) for each book, we can conclude, per Simpson's Paradox, that highly reviewed books get more ratings, and a higher porportion of 5 star ratings. This suggests that goodreads actually is working, by leading people to focus on the best books.
 
