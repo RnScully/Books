@@ -53,7 +53,7 @@ def scoop_reviews():
     
     ++++++++++
     Returns
-    
+    doc: (dic) the user_id : html table of user-ratings of books on the goodreads user page
     '''
     # pull all class objects called 'bookalike review' into a list 
     reviews = driver.find_elements_by_class_name("bookalike")
