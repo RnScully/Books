@@ -14,16 +14,24 @@ I mean, seriously. Look at this. Look what we've done to this ranking system.
 
 but knowing that we're not rational, heck, I'll assume that the vast majority of people are reviewing books at 4 stars, something more like this. 
 <p align="left">
-<img src="img/hypothesis_test.png">
+<img src="img/hypothesis_test.png" alt="drawing" width="400">
 </p>
 
+#### About Goodreads
+Goodreads is a social media platform organized around users who claim to have read books, leave ratings on books, and write reviews about such books. Every user has a page which contains a tabular 'bookshelf' that contains their personal ratings, and lots of additonal book metadata.
+
+Users log onto goodreads and collect the books they've read, and often e-readers ask readers to rate a book as they reach the final pages of the book, and that information, if your accounts are paired, is submitted to goodreads. 
+
+Goodreads reveiws are...slanted. Initially, I expected arguing that book readers are saps, and tend to rate books higher than 4 stars more often than not was a very agressive statement...but its actually rather a lot worse than that.  
+
+
 ## Initial Goal
+
 The project would be, then, to correct for this lean toward a human love of books and de-rank books into a uniform distribution. 
 
+* Collect huge numbers of bookreads user bookshelves
 * Prove that book readers are saps through science,
 * re-chart their ratings into a sytsem that accounts for their sappy-ness. 
-
-this repository includes a system for scraping goodreads for user ratings, cleaning that data, and adjusting a rating score. 
 
 ## Hypothesis
 Our hypothesis is that goodreads raters rate books above 4 stars more often than not. 
@@ -32,17 +40,20 @@ H0 : P(x<=4) > .5
 Ha : P(x>4)>.5
 
 ## Analys methods 
+I  built a scraper to scrape randomly selected user-numbers from the 100m + users on goodreads, pulled their 'bookshelf' book-tablesand stored the html in mongo on a group of ec2. I then built a script which cleans goodreads bookshelf-data created by the scraper does some data engineering to turn the data into easily ingestible .npy files. 
+
+I scraped 13878 user bookshelfs from goodreads, gathering 50109 ratings on 21569 uniqe books (with many popular books having been rated more than once), and ran some data analys on them using Scikit-Learn and Pandas. 
+
+
+
 The tech stack consists of Python 3, Numpy, Pandas, Selenium, PyMongo, Beautiful Soup, Scikit-Learn, Matplotlib, HTML
  
 scripts in src/:
 
-```samples.py```
-a script which made my 10 sample sets.
-
 ```gr_scraper.py```
 a script which accesses progress.txt and samples.txt as logfiles to scrape the bookshelves of randomly chosen users on goodreads and stores it in mongodb
 
-```gr_db_cleaner.py````
+```gr_db_cleaner.py```
 a script which does initial data cleaning and feature engineering, turning the mongo collection into a numpy array. 
 
 Data in src/data/, the cleaned dataset
