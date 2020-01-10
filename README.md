@@ -25,16 +25,13 @@ The project would be, then, to correct for this lean toward a human love of book
 
 this repository includes a system for scraping goodreads for user ratings, cleaning that data, and adjusting a rating score. 
 
-# Hypothesis
+## Hypothesis
 Our hypothesis is that goodreads raters rate books above 4 stars more often than not. 
 
 H0 : P(x<=4) > .5
 Ha : P(x>4)>.5
 
-# Analys methods 
-Tech stack
-The tech stack consists of Python 3, Numpy, Pandas, Beautiful Soup, Linguistic Inquiry and Word Count (LIWC), Natural Language Toolkit (NLTK), Scikit-Learn, Matplotlib, HTML, CSS, Tableau, Flask, and Heroku.
-
+## Analys methods 
 The tech stack consists of Python 3, Numpy, Pandas, Selenium, PyMongo, Beautiful Soup, Scikit-Learn, Matplotlib, HTML
  
 scripts in src/:
@@ -51,7 +48,7 @@ a script which does initial data cleaning and feature engineering, turning the m
 Data in src/data/, the cleaned dataset
 ```datacln.npy```
 
-# Results section
+## Results
 
 A t test was performed on the hypothesis, returning a t statistic of 127.2666, and a P value that rounded to 0. Its very safe to say that goodreads reviews are biassed even more than expected. 
 
@@ -63,8 +60,12 @@ The average rating given to books reviewed in the sample was 4.483 (plus or minu
 </p>
 Furthermore, since the average user rating given to books is much higher than the average rating (of all user ratings) for each book, we can conclude, per Simpson's Paradox, that highly reviewed books get more ratings, and a higher porportion of 5 star ratings. This suggests that goodreads actually is working, by leading people to focus on the best books.
 
-
-Anyone who wonders if I fall into this same issue...well, [here's my goodreads shelf,](https://www.goodreads.com/review/list/26338733) which you can see is...primarily 4 and 5 star ratings. 
-
+That goodreads is working...does not mean that we ought be happy with the state of ratings. Ratings ought not 
 
 
+## Future improvements
+- use quantile data to generate an api that will respond to user-submitted books with their normalized scoring, ie: I submit Jane Eyre, and the system tells me that *Jane Eyre is among the worst books on goodreads*. More seriously, I expet a response that tells the user what percent of all other books on goodreads that book is ranked higher than, placing it on a graph, and likely a cute response along the lines of the sarcastic and juevenile opinion above. 
+- pull review text as well as ratings, and do natural language processing on that to further inform our calculations about the quality of books. 
+
+
+Finally, anyone who wonders if I fall into this same issue...well, [here's my goodreads shelf,](https://www.goodreads.com/review/list/26338733) which you can see is...primarily 4 and 5 star ratings. 
