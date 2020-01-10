@@ -48,8 +48,10 @@ a script which accesses progress.txt and samples.txt as logfiles to scrape the b
 ```gr_db_cleaner.py````
 a script which does initial data cleaning and feature engineering, turning the mongo collection into a numpy array. 
 
-Data in src/data/, the cleaned dataset
+Data in src/data/ the cleaned dataset: 13878 user bookshelfs from goodreads, containing 50109 ratings on 21569 unique books.
 ```datacln.npy```
+
+
 
 # Results section
 
@@ -57,6 +59,8 @@ A t test was performed on the hypothesis, returning a t statistic of 127.2666, a
 
 
 The average rating given to books reviewed in the sample was 4.483 (plus or minus .0074 @95% confidence), and the average rating of books on goodreads, as distinct from the average rating given by a user, is 4.02 (plus or minus .004 @95% confidence)
+
+How much sappier *(I really need to figure out a decent tree-blood joke)* than expected are the goodreads ratings? 
 
 <p align="center">
 <img src="img/simpsons_paradox.png">
