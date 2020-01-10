@@ -58,9 +58,12 @@ The average rating given to books reviewed in the sample was 4.483 (plus or minu
 <p align="center">
 <img src="img/simpsons_paradox.png">
 </p>
-Furthermore, since the average user rating given to books is much higher than the average rating (of all user ratings) for each book, we can conclude, per Simpson's Paradox, that highly reviewed books get more ratings, and a higher porportion of 5 star ratings. This suggests that goodreads actually is working, by leading people to focus on the best books.
+Furthermore, since the average user rating given to books is much higher than the average rating (of all user ratings) for each book, we can conclude, per Simpson's Paradox, that highly reviewed books get more ratings, and a higher porportion of 5 star ratings. This suggests that goodreads actually is working, by leading people to focus on the best books...but in a less than ideal way:
 
-That goodreads is working...does not mean that we ought be happy with the state of ratings. Ratings ought not 
+<p align="center">
+<img src="img/quantiles.png">
+</p>
+what you could argue is worthy of a single star review, the lowest 20% of rated books...those books are given between 3.2 and 3.8 average stars….and everything under 3.2 is in the lowest 1% of book reviews
 
 
 ## Future improvements
